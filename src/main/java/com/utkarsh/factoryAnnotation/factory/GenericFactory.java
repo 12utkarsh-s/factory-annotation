@@ -5,10 +5,18 @@ import java.util.Map;
 
 public class GenericFactory<K, T> {
 
-    private Map<K, T> implementationMap =  new HashMap<>();
+    private final Map<K, T> implementationMap;
 
-    T getInstance(K key) {
+    public GenericFactory() {
+        this.implementationMap = new HashMap<>();
+    }
+
+    public T getInstance(K key) {
         return implementationMap.get(key);
+    }
+
+    public void registerInstance(K key, T instance) {
+        implementationMap.put(key, instance);
     }
 }
 
